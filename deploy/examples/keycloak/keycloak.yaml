@@ -12,3 +12,6 @@ spec:
     enabled: True
   podDisruptionBudget:
     enabled: True
+  tls:
+    termination: reencrypt
+  wildcardPolicy: None

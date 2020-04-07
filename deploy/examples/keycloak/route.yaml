@@ -1,0 +1,44 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  annotations:
+    haproxy.router.openshift.io/balance: source
+    kubectl.kubernetes.io/last-applied-configuration: >
+      {"apiVersion":"route.openshift.io/v1","kind":"Route","metadata":{"annotations":{"haproxy.router.openshift.io/balance":"source","openshift.io/host.generated":"true"},"creationTimestamp":"2020-04-06T12:11:20Z","labels":{"app":"keycloak"},"name":"keycloak","namespace":"alex-rhsso-test","ownerReferences":[{"apiVersion":"keycloak.org/v1alpha1","blockOwnerDeletion":true,"controller":true,"kind":"Keycloak","name":"example-keycloak","uid":"8a8d0b3e-78fe-45da-8fd4-7e1abb3888ab"}],"resourceVersion":"2424233","selfLink":"/apis/route.openshift.io/v1/namespaces/alex-rhsso-test/routes/keycloak","uid":"12a34d77-cd7d-4d47-bc07-67473525e499"},"spec":{"host":"keycloak-alex-rhsso-test.apps.okd.baloise.dev","port":{"targetPort":"keycloak"},"tls":{"termination":"reencrypt"},"to":{"kind":"Service","name":"keycloak","weight":100},"wildcardPolicy":"None"},"status":{"ingress":[{"conditions":[{"lastTransitionTime":"2020-04-06T12:11:20Z","status":"True","type":"Admitted"}],"host":"keycloak-alex-rhsso-test.apps.okd.baloise.dev","routerCanonicalHostname":"apps.okd.baloise.dev","routerName":"default","wildcardPolicy":"None"}]}}
+    openshift.io/host.generated: 'true'
+  selfLink: /apis/route.openshift.io/v1/namespaces/alex-rhsso-test/routes/keycloak
+  resourceVersion: '2429108'
+  name: keycloak
+  uid: 12a34d77-cd7d-4d47-bc07-67473525e499
+  creationTimestamp: '2020-04-06T12:11:20Z'
+  namespace: alex-rhsso-test
+  ownerReferences:
+    - apiVersion: keycloak.org/v1alpha1
+      kind: Keycloak
+      name: example-keycloak
+      uid: 8a8d0b3e-78fe-45da-8fd4-7e1abb3888ab
+      controller: true
+      blockOwnerDeletion: true
+  labels:
+    app: keycloak
+spec:
+  host: keycloak-alex-rhsso-test.apps.okd.baloise.dev
+  to:
+    kind: Service
+    name: keycloak
+    weight: 100
+  port:
+    targetPort: keycloak
+  tls:
+    termination: reencrypt
+  wildcardPolicy: None
+status:
+  ingress:
+    - host: keycloak-alex-rhsso-test.apps.okd.baloise.dev
+      routerName: default
+      conditions:
+        - type: Admitted
+          status: 'True'
+          lastTransitionTime: '2020-04-06T12:11:20Z'
+      wildcardPolicy: None
+      routerCanonicalHostname: apps.okd.baloise.dev

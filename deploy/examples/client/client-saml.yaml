@@ -1,0 +1,16 @@
+apiVersion: keycloak.org/v1alpha1
+kind: KeycloakClient
+metadata:
+  name: keycloak-saml-test
+  labels:
+    app: sso
+spec:
+  realmSelector:
+    matchLabels:
+      app: sso
+  client:
+    clientId: keycloak-saml
+    secret: client-secret
+    clientAuthenticatorType: client-secret
+    protocol: saml
+    adminUrl: adminUrl
